@@ -3,6 +3,8 @@ A simple Android library that allows an ad slideshow to be added into any view i
 
 # Start Here
 
+[![Release](https://img.shields.io/github/release/nateisner/android-ads.svg?label=JitPack)](https://jitpack.io/#nateisner/android-ads/)
+
 You must first add JitPack.io to the repositories list in your app's build.gradle file:
 
 ```gradle
