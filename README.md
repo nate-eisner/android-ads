@@ -17,7 +17,7 @@ Then, add this to the list of dependencies:
 
 ```gradle
 dependencies {
-    compile 'com.github.nateisner:androidads:0.1.0'
+    compile 'com.github.nateisner:androidads:0.1.1'
 }
 
 ```
