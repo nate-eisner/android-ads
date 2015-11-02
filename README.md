@@ -24,33 +24,41 @@ dependencies {
 Add a `ViewGroup` to your layout that will act as the root for the images. This can be a `RelativeLayout`, `LinearLayout`, `CoordinatorLayout` ...etc. The sizes of this view will be the size of the ads shown.
 
 Example:
-```   
+
+
+```
 <RelativeLayout
         android:id="@+id/adContainer"
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:layout_gravity="bottom" />```
+        android:layout_gravity="bottom" />
+```
+    
         
 Then, you can build your AdProvider. Using supported features.
 
 
-`HeaderFields` object is used to add fields to any HTTP request made by your `AdProvider` Example:
-```      
-        HeaderFields keyheaders = new HeaderFields();
-        keyheaders.add("FieldName","value");
-        keyheaders.add("FieldName","valueofanother");   
-```        
+`HeaderFields` object is used to add fields to any HTTP request made by your `AdProvider` Example:  
+
+```
+HeaderFields keyheaders = new HeaderFields();
+keyheaders.add("FieldName","value");
+keyheaders.add("FieldName","valueofanother");
+``` 
 
 The header can now be used when building your `AdProvider` like so:
+
 ```
-        new AdProvider.Builder(context)
-            .imageServer(serverStringURL) 
-            .parseTag("imagefilename") 
-            .attachTo(rootView) 
-            .imageTime(5000) //in ms
-            .useAPIKey(keyserver, keyheaders, keyHeaderName)
-            .start();
+new AdProvider.Builder(context)
+    .imageServer(serverStringURL) 
+    .parseTag("imagefilename") 
+    .attachTo(rootView) 
+    .imageTime(5000) //in ms
+    .useAPIKey(keyserver, keyheaders, keyHeaderName)
+    .start();
 ```
+
+
 Other features include:
 
 * Additional HeaderFields can be added for use when making the XML request.
@@ -68,7 +76,7 @@ Other features include:
     
 * Offline mode will enable your app to use what ever images it has cached on disk if there is no connection with the server. (This feature is not fully implemented yet)
 
-    `.offlineUse(true) `
+    `.offlineUse(true)`
 
 ## Developed By
 
@@ -83,7 +91,7 @@ Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
 You may obtain a copy of the License at
 
-    http://www.apache.org/licenses/LICENSE-2.0
+http://www.apache.org/licenses/LICENSE-2.0
 
 Unless required by applicable law or agreed to in writing, software
 distributed under the License is distributed on an "AS IS" BASIS,
@@ -91,4 +99,3 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 ```
-
