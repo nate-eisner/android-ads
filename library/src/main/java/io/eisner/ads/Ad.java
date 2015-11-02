@@ -1,7 +1,7 @@
 package io.eisner.ads;
 
 import android.content.Context;
-import android.os.Build;
+import android.support.v4.content.ContextCompat;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -21,10 +21,7 @@ public class Ad extends ImageView {
         setLayoutParams(layoutParams);
 //        setBackgroundColor(Color.CYAN);
         setVisibility(VISIBLE);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            setImageDrawable(context.getDrawable(R.drawable.placeholder));
-        }
-        //// TODO: 11/1/15 set drawable in lower SDKs
+        setImageDrawable(ContextCompat.getDrawable(context,R.drawable.placeholder));
 //        addOnAttachStateChangeListener(new OnAttachStateChangeListener() {
 //            @Override
 //            public void onViewAttachedToWindow(View v) {

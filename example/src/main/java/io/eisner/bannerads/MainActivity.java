@@ -12,6 +12,7 @@ import io.eisner.ads.HeaderFields;
 
 public class MainActivity extends AppCompatActivity {
     private FloatingActionButton fab;
+    AdProvider myAdProvider;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
 
         final String server = getResources().getString(R.string.xmlserver);
 
-        new AdProvider.Builder(this)
+        myAdProvider = new AdProvider.Builder(this)
                 .imageServer(server) //the location of the xml
                 .attachTo(rootView) //root to attach to, the height
                 .imageTime(5000) //in ms
