@@ -36,18 +36,7 @@ Example:
 ```
     
         
-Then, you can build your AdProvider. Using supported features.
-
-
-`HeaderFields` object is used to add fields to any HTTP request made by your `AdProvider` Example:  
-
-```
-HeaderFields keyheaders = new HeaderFields();
-keyheaders.add("FieldName","value");
-keyheaders.add("FieldName","valueofanother");
-``` 
-
-The header can now be used when building your `AdProvider` like so:
+Then, you can build your `AdProvider`. Using supported features.
 
 ```
 new AdProvider.Builder(context)
@@ -60,9 +49,17 @@ new AdProvider.Builder(context)
 ```
 
 
-Other features include:
+Features include:
 
 * Additional HeaderFields can be added for use when making the XML request.
+    
+    `HeaderFields` object is used to add fields to any HTTP request made by your `AdProvider` Example:  
+
+    ```
+    HeaderFields moreheaders = new HeaderFields();
+    moreheaders.add("X-FieldName1","value");
+    moreheaders.add("X-FieldName2","valueofanother");
+    ``` 
 
     `.requestHeader(HeaderField moreheaders)`
 
@@ -78,6 +75,20 @@ Other features include:
 * Offline mode will enable your app to use what ever images it has cached on disk if there is no connection with the server. The images that will be shown are the last images that were cached and hopefully not cleared by the system or user. (This feature is not fully implemented yet)
 
     `.offlineUse(true)`
+    
+* An API Key can be used when needed. If an API key is set, it will request the key by using the given server url. You can add a `HeaderFields` object with custom headers to request the key. Finally, you will specify the name of the header field where the API key will be used when requesting the image list.
+    
+    ```
+    HeaderFields keyheaders = new HeaderFields();
+    keyheaders.add("X-FIELD-NAME", "value");
+    
+    String keyserver = "http://www.apiserver.com";
+    String keyHeaderField = "X-API-KEY";
+    
+    new AdProvider.Builder(context)
+    .useAPIKey(keyserver, keyheaders, keyHeaderField);
+    ```
+    
 
 ## How It Works
 
