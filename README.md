@@ -76,20 +76,6 @@ Features include:
 
     `.offlineUse(true)`
     
-* An API Key can be used when needed. If an API key is set, it will request the key by using the given server url. You can add a `HeaderFields` object with custom headers to request the key. Finally, you will specify the name of the header field where the API key will be used when requesting the image list.
-    
-    ```
-    HeaderFields keyheaders = new HeaderFields();
-    keyheaders.add("X-FIELD-NAME", "value");
-    
-    String keyserver = "http://www.apiserver.com";
-    String keyHeaderField = "X-API-KEY";
-    
-    new AdProvider.Builder(context)
-    .useAPIKey(keyserver, keyheaders, keyHeaderField);
-    ```
-    
-
 ## How It Works
 
 #### Your Ad Server
@@ -124,11 +110,19 @@ Features include:
 * API Key - Sometimes you may want to limit your server's access by using an API key in your HTTP request header. The `AdProvider` can be built with `.useAPIKey()`. Such as:
     
     ```
-    .useAPIKey(String of the url that will repond with the key, 
-            HeaderFields object that maybe needed to get the response, 
-            String name of the HeaderField the key is used in the XML request.)
+    //HeaderFields object that maybe needed to get the response
+    HeaderFields keyheaders = new HeaderFields();
+    keyheaders.add("X-FIELD-NAME", "value");
+    
+    //String of the url that will repond with the key
+    String keyserver = "http://www.apikeyserver.com";
+    
+    //String name of the HeaderField the key is used in the XML request.
+    String keyHeaderField = "X-API-KEY";
+    
+    .useAPIKey(keyserver, keyheaders, keyHeaderField);
     ```
-    The server should response with `<?xml version="1.0" encoding="utf-8"?>
+    The server should respond with `<?xml version="1.0" encoding="utf-8"?>
                                      <xml>
                                        <item>keyvaluehere</item>
                                      </xml>` and that key value will be used for the rest of the session.
